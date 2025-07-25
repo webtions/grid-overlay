@@ -1,5 +1,6 @@
-=== Grid Overlay Figma-Style ===
-Contributors: hchouhan
+=== Grid Overlay – Figma Style Layout Grid for WordPress ===
+Contributors: themeist, hchouhan
+Donate link: https://themeist.com/plugins/wordpress/grid-overlay/
 Tags: figma, grid, overlay, alignment, columns
 Requires at least: 6.0
 Tested up to: 6.8
