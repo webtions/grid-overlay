@@ -41,6 +41,9 @@ jobs:
           generate-zip: true
         env:
           VERSION: 0.0.0
+          # This action version checks for nonempty values before honoring dry-run.
+          SVN_USERNAME: dry-run
+          SVN_PASSWORD: dry-run
       - name: Check the plugin ZIP
         env:
           ZIP_PATH: ${{ steps.package.outputs.zip-path }}
@@ -63,6 +66,12 @@ jobs:
       group: wordpress-org
       queue: max
     steps:
+      - name: Install Subversion
+        run: |
+          if ! command -v svn >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y subversion
+          fi
       - name: Check out the release tag
         if: github.ref_type == 'tag'
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
