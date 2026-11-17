@@ -17,7 +17,7 @@
 		"phpcompatibility/phpcompatibility-wp": "^2.1"
 	},
 	"scripts": {
-	  "lint": "parallel-lint --exclude vendor .",
+	  "lint": "parallel-lint -p php --exclude vendor .",
 	  "standards:check": "phpcs",
 	  "standards:fix": "phpcbf",
 	  "analyze": "phpstan analyze --memory-limit=512M"
