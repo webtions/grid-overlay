@@ -3,7 +3,7 @@
  * Plugin Name:       Grid Overlay
  * Plugin URI:        https://themeist.com/plugins/wordpress/grid-overlay/#utm_source=wp-plugin&utm_medium=grid-overlay&utm_campaign=plugins-page
  * Description:       Add a Figma-style visual grid overlay to the frontend to test alignment and spacing in real time. Configure values for different screen sizes from the admin.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Requires at least: 6.0
  * Requires PHP:      8.2
  * Author:            Themeist
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin version and path constants.
-define( 'GRIDOVERLAY_PLUGIN_VERSION', '1.1.0' );
+define( 'GRIDOVERLAY_PLUGIN_VERSION', '1.1.1' );
 define( 'GRIDOVERLAY_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GRIDOVERLAY_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 

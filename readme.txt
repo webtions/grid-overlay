@@ -5,7 +5,7 @@ Tags: figma, grid, overlay, alignment, columns
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -39,6 +39,11 @@ This version shows the grid for everyone if enabled. A future update might inclu
 1. Settings screen with per-screen options
 
 == Changelog ==
+
+= 1.1.1 =
+* Minimum PHP version is now 8.2.
+* Tested up to WordPress 7.1.
+* Coding standards cleanup.
 
 = 1.1.0 =
 * Major improvement: Refactored the frontend grid overlay to use real DOM-based columns instead of a repeating background gradient.
