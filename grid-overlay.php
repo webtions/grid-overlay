@@ -5,7 +5,7 @@
  * Description:       Add a Figma-style visual grid overlay to the frontend to test alignment and spacing in real time. Configure values for different screen sizes from the admin.
  * Version:           1.1.0
  * Requires at least: 6.0
- * Requires PHP:      7.4
+ * Requires PHP:      8.2
  * Author:            Themeist
  * Author URI:        https://themeist.com/
  * Author Email:      support@themeist.com
