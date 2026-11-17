@@ -22,12 +22,12 @@ function gridoverlay_enqueue_overlay_assets() {
 	add_action( 'wp_footer', 'gridoverlay_output_grid_overlay_dom' );
 
 	// Enqueue a small inline script to generate the DOM grid.
-	wp_register_script( 'gridoverlay-dom-script', false, [], GRIDOVERLAY_PLUGIN_VERSION, true );
+	wp_register_script( 'gridoverlay-dom-script', false, array(), GRIDOVERLAY_PLUGIN_VERSION, true );
 	wp_enqueue_script( 'gridoverlay-dom-script' );
 	wp_add_inline_script( 'gridoverlay-dom-script', gridoverlay_generate_grid_dom_js( $settings ) );
 
 	// Enqueue basic styles.
-	wp_register_style( 'gridoverlay-dom-style', false, [], GRIDOVERLAY_PLUGIN_VERSION );
+	wp_register_style( 'gridoverlay-dom-style', false, array(), GRIDOVERLAY_PLUGIN_VERSION );
 	wp_enqueue_style( 'gridoverlay-dom-style' );
 	wp_add_inline_style( 'gridoverlay-dom-style', gridoverlay_generate_grid_dom_css() );
 }
@@ -47,10 +47,30 @@ function gridoverlay_output_grid_overlay_dom() {
  * @return string JavaScript code.
  */
 function gridoverlay_generate_grid_dom_js( $settings ) {
-	$mobile    = $settings['mobile'] ?? [ 'columns' => 2, 'gutter' => 30, 'outer_margin' => 30, 'min_width' => 0 ];
-	$tablet    = $settings['tablet'] ?? [ 'columns' => 4, 'gutter' => 40, 'outer_margin' => 40, 'min_width' => 768 ];
-	$desktop   = $settings['desktop'] ?? [ 'columns' => 6, 'gutter' => 60, 'outer_margin' => 60, 'min_width' => 1280 ];
-	$extended  = $settings['extended'] ?? [ 'columns' => 6, 'gutter' => 120, 'outer_margin' => 160, 'min_width' => 1920 ];
+	$mobile   = $settings['mobile'] ?? array(
+		'columns'      => 2,
+		'gutter'       => 30,
+		'outer_margin' => 30,
+		'min_width'    => 0,
+	);
+	$tablet   = $settings['tablet'] ?? array(
+		'columns'      => 4,
+		'gutter'       => 40,
+		'outer_margin' => 40,
+		'min_width'    => 768,
+	);
+	$desktop  = $settings['desktop'] ?? array(
+		'columns'      => 6,
+		'gutter'       => 60,
+		'outer_margin' => 60,
+		'min_width'    => 1280,
+	);
+	$extended = $settings['extended'] ?? array(
+		'columns'      => 6,
+		'gutter'       => 120,
+		'outer_margin' => 160,
+		'min_width'    => 1920,
+	);
 
 	return "
 	(function() {
@@ -105,7 +125,7 @@ function gridoverlay_generate_grid_dom_js( $settings ) {
  * @return string CSS code.
  */
 function gridoverlay_generate_grid_dom_css() {
-	return "
+	return '
 	.gridoverlay-grid-overlay-wrapper {
 		position: fixed;
 		top: 0;
@@ -138,5 +158,5 @@ function gridoverlay_generate_grid_dom_css() {
 	.gridoverlay-grid-column:last-child {
 		margin-right: var(--gridoverlay-grid-outer-margin);
 	}
-	";
+	';
 }

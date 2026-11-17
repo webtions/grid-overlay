@@ -17,11 +17,11 @@ function gridoverlay_register_settings() {
 	register_setting(
 		'gridoverlay_settings_group',
 		'gridoverlay_settings',
-		[
+		array(
 			'type'              => 'array',
 			'sanitize_callback' => 'gridoverlay_sanitize_grid_settings',
 			'show_in_rest'      => false,
-		]
+		)
 	);
 
 	add_filter( 'option_gridoverlay_settings', 'gridoverlay_merge_defaults' );
@@ -35,19 +35,19 @@ add_action( 'admin_init', 'gridoverlay_register_settings' );
  * @return array Sanitized settings ready to be saved.
  */
 function gridoverlay_sanitize_grid_settings( $input ) {
-	$output            = [];
+	$output            = array();
 	$output['enabled'] = isset( $input['enabled'] ) ? 1 : 0;
 
-	$screens = [ 'mobile', 'tablet', 'desktop', 'extended' ];
+	$screens = array( 'mobile', 'tablet', 'desktop', 'extended' );
 
 	foreach ( $screens as $screen ) {
-		$output[ $screen ] = [
+		$output[ $screen ] = array(
 			'enabled'      => isset( $input[ $screen ]['enabled'] ) ? 1 : 0,
 			'columns'      => isset( $input[ $screen ]['columns'] ) ? intval( $input[ $screen ]['columns'] ) : 0,
 			'gutter'       => isset( $input[ $screen ]['gutter'] ) ? intval( $input[ $screen ]['gutter'] ) : 0,
 			'outer_margin' => isset( $input[ $screen ]['outer_margin'] ) ? intval( $input[ $screen ]['outer_margin'] ) : 0,
 			'min_width'    => isset( $input[ $screen ]['min_width'] ) ? intval( $input[ $screen ]['min_width'] ) : 0,
-		];
+		);
 	}
 
 	return $output;
@@ -57,37 +57,37 @@ function gridoverlay_sanitize_grid_settings( $input ) {
  * Set default plugin options upon activation.
  */
 function gridoverlay_set_default_options() {
-	$defaults = [
-		'enabled' => 1,
-		'mobile'  => [
+	$defaults = array(
+		'enabled'  => 1,
+		'mobile'   => array(
 			'enabled'      => 1,
 			'columns'      => 2,
 			'gutter'       => 30,
 			'outer_margin' => 30,
 			'min_width'    => 0,
-		],
-		'tablet' => [
+		),
+		'tablet'   => array(
 			'enabled'      => 1,
 			'columns'      => 4,
 			'gutter'       => 40,
 			'outer_margin' => 40,
 			'min_width'    => 768,
-		],
-		'desktop' => [
+		),
+		'desktop'  => array(
 			'enabled'      => 1,
 			'columns'      => 6,
 			'gutter'       => 60,
 			'outer_margin' => 60,
 			'min_width'    => 1280,
-		],
-		'extended' => [
+		),
+		'extended' => array(
 			'enabled'      => 1,
 			'columns'      => 6,
 			'gutter'       => 120,
 			'outer_margin' => 160,
 			'min_width'    => 1920,
-		],
-	];
+		),
+	);
 
 	if ( ! get_option( 'gridoverlay_settings' ) ) {
 		add_option( 'gridoverlay_settings', $defaults );
@@ -101,12 +101,36 @@ function gridoverlay_set_default_options() {
  * @return array Options merged with defaults.
  */
 function gridoverlay_merge_defaults( $options ) {
-	$defaults = [
-		'mobile'   => [ 'enabled' => 1, 'columns' => 2, 'gutter' => 30, 'outer_margin' => 30, 'min_width' => 0 ],
-		'tablet'   => [ 'enabled' => 1, 'columns' => 4, 'gutter' => 40, 'outer_margin' => 40, 'min_width' => 768 ],
-		'desktop'  => [ 'enabled' => 1, 'columns' => 6, 'gutter' => 60, 'outer_margin' => 60, 'min_width' => 1280 ],
-		'extended' => [ 'enabled' => 1, 'columns' => 6, 'gutter' => 120, 'outer_margin' => 160, 'min_width' => 1920 ],
-	];
+	$defaults = array(
+		'mobile'   => array(
+			'enabled'      => 1,
+			'columns'      => 2,
+			'gutter'       => 30,
+			'outer_margin' => 30,
+			'min_width'    => 0,
+		),
+		'tablet'   => array(
+			'enabled'      => 1,
+			'columns'      => 4,
+			'gutter'       => 40,
+			'outer_margin' => 40,
+			'min_width'    => 768,
+		),
+		'desktop'  => array(
+			'enabled'      => 1,
+			'columns'      => 6,
+			'gutter'       => 60,
+			'outer_margin' => 60,
+			'min_width'    => 1280,
+		),
+		'extended' => array(
+			'enabled'      => 1,
+			'columns'      => 6,
+			'gutter'       => 120,
+			'outer_margin' => 160,
+			'min_width'    => 1920,
+		),
+	);
 
 	foreach ( $defaults as $screen => $screen_defaults ) {
 		if ( ! isset( $options[ $screen ] ) ) {

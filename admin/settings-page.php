@@ -73,8 +73,11 @@ function gridoverlay_render_settings_page() {
 				<table class="form-table">
 					<?php if ( 'mobile' !== $key ) : ?>
 						<tr>
-							<?php // translators: %s is the screen size label (e.g., "Tablet"). ?>
-							<th scope="row"><?php echo esc_html( sprintf( __( 'Enable %s', 'grid-overlay' ), $label ) ); ?></th>
+							<?php
+							/* translators: %s: screen size label (e.g., "Tablet"). */
+							$enable_label = sprintf( __( 'Enable %s', 'grid-overlay' ), $label );
+							?>
+							<th scope="row"><?php echo esc_html( $enable_label ); ?></th>
 							<td>
 								<input type="checkbox" name="gridoverlay_settings[<?php echo esc_attr( $key ); ?>][enabled]" value="1" <?php checked( 1, $screen['enabled'] ?? 0 ); ?> />
 							</td>
