@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<ruleset name="Figma Grid Overlay">
-    <description>WordPress Coding Standards for the Figma Grid Overlay plugin.</description>
+<ruleset name="Grid Overlay">
+    <description>WordPress Coding Standards for the Grid Overlay plugin.</description>
 
     <!-- Include plugin-specific folders -->
-    <file>figma-grid-overlay.php</file>
+    <file>grid-overlay.php</file>
     <file>includes/</file>
     <file>admin/</file>
 

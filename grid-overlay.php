@@ -8,7 +8,7 @@
  * Requires PHP:      7.4
  * Author:            Themeist
  * Author URI:        https://themeist.com/
- * Author Email:      support@themeist.com/
+ * Author Email:      support@themeist.com
  * License:           GPL-3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:       grid-overlay

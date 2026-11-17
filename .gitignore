@@ -1,48 +1,68 @@
-# Wordpress - ignore core, configuration, examples, uploads and logs.
-# https://github.com/github/gitignore/blob/main/WordPress.gitignore
+# ─────────────────────────────
+# OS / System Files
+# ─────────────────────────────
+.DS_Store
+Thumbs.db
+._*
 
-# Core
-#
-# Note: if you want to stage/commit WP core files
-# you can delete this whole section/until Configuration.
-/wp-admin/
-/wp-content/index.php
-/wp-content/languages
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
-/wp-includes/
-/index.php
-/license.txt
-/readme.html
-/wp-*.php
-/xmlrpc.php
+# ─────────────────────────────
+# Git / Versioning
+# ─────────────────────────────
+.git/
+.github_token
 
-# Configuration
-wp-config.php
+# ─────────────────────────────
+# Editor / Project Settings
+# ─────────────────────────────
+.vscode/*
+!.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+.idea/
+*.sublime-project
+*.sublime-workspace
 
-# Example themes
-/wp-content/themes/twenty*/
+# ─────────────────────────────
+# Node / NPM / Yarn
+# ─────────────────────────────
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn.lock
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
 
-# Example plugin
-/wp-content/plugins/hello.php
+# ─────────────────────────────
+# PHP / Composer
+# ─────────────────────────────
+vendor/
+composer.lock
+.php-cs-fixer.cache
 
-# Uploads
-/wp-content/uploads/
+# ─────────────────────────────
+# WordPress Specific
+# ─────────────────────────────
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+local-config.php
 
-# Log files
-*.log
+# ─────────────────────────────
+# Build / Dist / Temp Files
+# ─────────────────────────────
+build/
+dist/
+*.map
+*.zip
+*.tgz
+*.rej
+*.bak
 
-# htaccess
-/.htaccess
-
-# All plugins
-#
-# Note: If you wish to whitelist plugins,
-# uncomment the next line
-#/wp-content/plugins
-
-# All themes
-#
-# Note: If you wish to whitelist themes,
-# uncomment the next line
-#/wp-content/themes
+# ─────────────────────────────
+# Naming conventions for temporary or copied files
+# ─────────────────────────────
+* copy.*
+* old.*
+*-old.*
