@@ -10,3 +10,4 @@ The plugin is published to WordPress.org from this repo.
 
 - Push a tag like `1.1.1` (no `v`). The tag, the `Version` in `grid-overlay.php` and `Stable tag` in `readme.txt` must match.
 - Banners, icons and screenshots live in `.wordpress-org/`. Pushing changes there to `main` updates the directory assets.
+- Editing only `readme.txt` on `main` updates it in SVN trunk and in the current Stable tag folder, without a new release. This is skipped until the Stable tag has been released.

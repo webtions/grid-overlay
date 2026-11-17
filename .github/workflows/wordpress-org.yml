@@ -5,12 +5,14 @@ on:
     paths:
       - '.github/workflows/wordpress-org.yml'
       - '.github/scripts/sync-wordpress-assets.sh'
+      - '.github/scripts/sync-wordpress-readme.sh'
       - '.distignore'
       - '.wordpress-org/**'
+      - 'readme.txt'
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['.wordpress-org/**']
+    paths: ['.wordpress-org/**', 'readme.txt']
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
 
@@ -19,6 +21,7 @@ permissions:
 
 env:
   SLUG: grid-overlay
+  SVN_URL: https://plugins.svn.wordpress.org/grid-overlay
   ASSETS_URL: https://plugins.svn.wordpress.org/grid-overlay/assets/
   # The dedicated assets step reads the latest main, including during a tagged release.
   ASSETS_DIR: .github/unused-release-assets
@@ -56,6 +59,8 @@ jobs:
           fi
       - name: Preview directory asset changes
         run: bash .github/scripts/sync-wordpress-assets.sh .wordpress-org "$ASSETS_URL"
+      - name: Preview readme changes
+        run: bash .github/scripts/sync-wordpress-readme.sh readme.txt "$SVN_URL"
 
   publish:
     name: Publish to WordPress.org
@@ -102,3 +107,10 @@ jobs:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         run: bash .github/scripts/sync-wordpress-assets.sh .wordpress-org "$ASSETS_URL" --commit
+      - name: Publish readme changes
+        # A tag release already ships the readme, so this only runs for pushes to main.
+        if: github.ref_type == 'branch'
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        run: bash .github/scripts/sync-wordpress-readme.sh readme.txt "$SVN_URL" --commit
